@@ -1,70 +1,65 @@
 use std::io::Read;
 
 fn main() {
-    let mut memoire = vec![10, 15];
+    let mut memoire = vec![0];
     // let instructions = vec![Boucle(vec![Moins, Droite, Plus, Gauche])];
-    let instructions = parse(&"+-->>>>><+[++++[+-[-]>.]]".to_string()).unwrap_or(vec![]);
-
+    // test let instructions = parse_v2(&"+-->>>>><+[++++[+-[-]><.]]".to_string()).unwrap_or(vec![]);
+    //let instructions = parse_v2(&"++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.".to_string()).unwrap_or(vec![]);
+    //let instructions = parse_v2(&"+++>+>-".to_string()).unwrap_or(vec![]);
+    let text = std::fs::read_to_string("src/hello.bf".to_string());
+    let instructions = parse_v2(&text.unwrap_or_default()).unwrap_or(vec![]);
     println!("MEMOIRE DEPART : {:?}", memoire);
 
     interpreteur(&mut memoire, &instructions, 0);
-    println!("RESULTAT FINAL : {:?}", memoire)
+    println!("RESULTAT FINAL : {:?}", memoire);
 
+    let mut resultat = String::new();
+
+    for i in memoire {
+        resultat += char::from_u32(i as u32).unwrap().to_string().as_str();
+        //resultat += char::from_digit(((i as u32) + 103), 10).unwrap_or_default().to_string().as_str();
+    }
 }
 
+// +-->>>>><+[++++[+-[-]><.]]
+
+fn parse_v2(s: &String) -> Result<Vec<Instruction>, String>{
+    let mut vec_instruction = vec![];
+    let mut char_index = 0;
+    let mut new_string = String::new();
+    for c in s.chars() {
+        if c != '[' && c != ']' {
+            println!("ajout : {}", c);
+            new_string += &c.to_string();
+            if(char_index == s.len() - 1){
+                let new_simple_text_parsed = parse(&new_string.to_string()).unwrap_or(vec![]);
+                for i in new_simple_text_parsed {
+                    vec_instruction.push(i);
+                }
+            }
+        }else if c == '['{
+            println!("Nouvelle boucle {}", new_string);
+            let new_text = &s[0..char_index];
+            let new_simple_text_parsed = parse(&new_string.to_string()).unwrap_or(vec![]);
+            for i in new_simple_text_parsed {
+                vec_instruction.push(i);
+            }
+
+            let new_recursive_in_loop = parse_v2(&new_text.to_string()).unwrap_or(vec![]);
+            for i in new_recursive_in_loop {
+                vec_instruction.push(i);
+            }
+        }else if c == ']'{
+            println!("Fin boucle {}", new_string);
+            let new_boucle = Instruction::Boucle(parse(&new_string.to_string()).unwrap_or(vec![]));
+            vec_instruction.push(new_boucle);
+        }
+        char_index+=1;
+    }
+    Ok(vec_instruction)
+}
 
 fn parse(s: &String) -> Result<Vec<Instruction>, String>{
-
-    let mut instructionsBoucles = vec![];
-    let mut nBoucle = s.matches("[").count();
-    println!("s length : {}", s.len());
-    println!("nBoucle : {}", nBoucle);
-
-
-    for i in 0..nBoucle {
-        println!("Recherche de la boucle {}", i);
-
-        let mut index_de_la_boucle_trouve = 0;
-        let mut indexChar = 0;
-        let mut index_debut_boucle = 0;
-        // je pars du début pour récupérer l'index du début de la boucle
-        for c in s.chars() {
-            if c == '[' {
-                if index_de_la_boucle_trouve == i {
-                    index_debut_boucle = indexChar;
-                    break;
-                }
-                index_de_la_boucle_trouve += 1;
-            }
-            indexChar+=1;
-        }
-        // println!("index_debut_boucle : {}", index_debut_boucle);
-        // je pars de la fin pour récupérer l'index de la fin de la boucle
-        let reversed = String::from(s.chars().rev().collect::<String>());
-        // println!("reversed : {}", reversed);
-        let mut index_de_la_boucle_trouve_r = 0;
-        let mut indexChar_r = 0;
-        let mut index_fin_boucle = 0;
-        // je pars du début pour récupérer l'index du début de la boucle
-        for c in reversed.chars() {
-            if c == ']' {
-                if index_de_la_boucle_trouve_r == i {
-                    index_fin_boucle = indexChar_r;
-                    break;
-                }
-                index_de_la_boucle_trouve_r += 1;
-            }
-            indexChar_r+=1;
-        }
-        // println!("index_fin_boucle : {}", index_fin_boucle);
-        index_fin_boucle = s.len() - index_fin_boucle;
-        // Créer les vecteurs grace aux index des boucles
-        let boucle = &s[index_debut_boucle..index_fin_boucle];
-        instructionsBoucles.push(boucle.to_string());
-    }
-
-    println!("BOUCLES : {:?}", instructionsBoucles);
-
     // Boucle each char of string
     let mut instructions = vec![];
     for c in s.chars() {
