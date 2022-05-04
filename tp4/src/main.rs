@@ -3,7 +3,7 @@ use std::io::Read;
 fn main() {
     let mut memoire = vec![10, 15];
     // let instructions = vec![Boucle(vec![Moins, Droite, Plus, Gauche])];
-    let instructions = parse(&"+--<>>>>><>.".to_string()).unwrap_or(vec![]);
+    let instructions = parse(&"+-->>>>><+[++++[+-[-]>.]]".to_string()).unwrap_or(vec![]);
 
     println!("MEMOIRE DEPART : {:?}", memoire);
 
@@ -14,6 +14,57 @@ fn main() {
 
 
 fn parse(s: &String) -> Result<Vec<Instruction>, String>{
+
+    let mut instructionsBoucles = vec![];
+    let mut nBoucle = s.matches("[").count();
+    println!("s length : {}", s.len());
+    println!("nBoucle : {}", nBoucle);
+
+
+    for i in 0..nBoucle {
+        println!("Recherche de la boucle {}", i);
+
+        let mut index_de_la_boucle_trouve = 0;
+        let mut indexChar = 0;
+        let mut index_debut_boucle = 0;
+        // je pars du début pour récupérer l'index du début de la boucle
+        for c in s.chars() {
+            if c == '[' {
+                if index_de_la_boucle_trouve == i {
+                    index_debut_boucle = indexChar;
+                    break;
+                }
+                index_de_la_boucle_trouve += 1;
+            }
+            indexChar+=1;
+        }
+        // println!("index_debut_boucle : {}", index_debut_boucle);
+        // je pars de la fin pour récupérer l'index de la fin de la boucle
+        let reversed = String::from(s.chars().rev().collect::<String>());
+        // println!("reversed : {}", reversed);
+        let mut index_de_la_boucle_trouve_r = 0;
+        let mut indexChar_r = 0;
+        let mut index_fin_boucle = 0;
+        // je pars du début pour récupérer l'index du début de la boucle
+        for c in reversed.chars() {
+            if c == ']' {
+                if index_de_la_boucle_trouve_r == i {
+                    index_fin_boucle = indexChar_r;
+                    break;
+                }
+                index_de_la_boucle_trouve_r += 1;
+            }
+            indexChar_r+=1;
+        }
+        // println!("index_fin_boucle : {}", index_fin_boucle);
+        index_fin_boucle = s.len() - index_fin_boucle;
+        // Créer les vecteurs grace aux index des boucles
+        let boucle = &s[index_debut_boucle..index_fin_boucle];
+        instructionsBoucles.push(boucle.to_string());
+    }
+
+    println!("BOUCLES : {:?}", instructionsBoucles);
+
     // Boucle each char of string
     let mut instructions = vec![];
     for c in s.chars() {
@@ -34,133 +85,128 @@ fn interpreteur(memoire: &mut Vec<i32>, instructions: &Vec<Instruction>, index: 
 
     let mut instructions_opti = vec![];
 
-    let mut same_in_row = 0;
+    let mut plus_moins_value = 0;
+    let mut droite_gauche_value = 0;
+    
     for i in 00..instructions.len() {
-        let mut instruction_courante = instructions[i].clone();
 
-        if i > 0 && instructions[i] == instructions[i-1]{
-            same_in_row += 1;
+        let instruction_courante = instructions[i].clone();
+        println!("instruction_courante : {:?}", instruction_courante);
+        let mut prochaine_instruction = Instruction::Fin;
+
+        if (i+1) < instructions.len() {
+            prochaine_instruction = instructions[i+1].clone();
+
         }else{
-            match instruction_courante {
-                Instruction::Plus => instructions_opti.push(Instruction::PlusOpti(same_in_row)),
-                Instruction::Moins => instructions_opti.push(Instruction::MoinsOpti(same_in_row)),
-                Instruction::Gauche => instructions_opti.push(Instruction::GaucheOpti(same_in_row)),
-                Instruction::Droite => instructions_opti.push(Instruction::DroiteOpti(same_in_row)),
-                Instruction::Lis => instructions_opti.push(Instruction::LisOpti(same_in_row)),
-                Instruction::Affiche => instructions_opti.push(Instruction::AfficheOpti(same_in_row)),
-                _ => println!("Erreur"),
-            };
-            same_in_row = 1;
-
+            prochaine_instruction = Instruction::Fin
         }
+
+        match instruction_courante{
+            Instruction::Plus => {
+                plus_moins_value += 1;
+                match prochaine_instruction {
+                    Instruction::Plus | Instruction::Moins => {
+                        // Rien faire
+                    }
+                    _ => {
+                        println!("----Push instru opti argVal +- : {}", plus_moins_value);
+                        instructions_opti.push(Instruction::PlusMoins(plus_moins_value));
+                        plus_moins_value = 0;
+                    }
+                }
+            }
+            Instruction::Moins => {
+                plus_moins_value -= 1;
+                match prochaine_instruction {
+                    Instruction::Plus | Instruction::Moins => {
+                        // Rien faire
+                    }
+                    _ => {
+                        println!("----Push instru opti argVal +- : {}", plus_moins_value);
+                        instructions_opti.push(Instruction::PlusMoins(plus_moins_value));
+                        plus_moins_value = 0;
+                    }
+                }
+            }
+            Instruction::Droite => {
+                droite_gauche_value += 1;
+                match prochaine_instruction {
+                    Instruction::Droite | Instruction::Gauche => {
+                        // Rien faire
+                    }
+                    _ => {
+                        println!("----Push instru opti argVal +- : {}", droite_gauche_value);
+                        instructions_opti.push(Instruction::DroiteGauche(droite_gauche_value));
+                        droite_gauche_value = 0;
+                    }
+                }
+            }
+            Instruction::Gauche => {
+                droite_gauche_value -= 1;
+                match prochaine_instruction {
+                    Instruction::Droite | Instruction::Gauche => {
+                        // Rien faire
+                    }
+                    _ => {
+                        println!("----Push instru opti argVal +- : {}", droite_gauche_value);
+                        instructions_opti.push(Instruction::DroiteGauche(droite_gauche_value));
+                        droite_gauche_value = 0;
+                    }
+                }
+            }
+            Instruction::Lis => instructions_opti.push(Instruction::Lis),
+            Instruction::Affiche => instructions_opti.push(Instruction::Affiche),
+            _ => println!("Erreur"),
+        }
+        
+        println!("\ndroite_gauche_value : {}", droite_gauche_value);
+        println!("plus_moins_value : {}", plus_moins_value);
+
     }
 
     println!("INSTRUCTIONS BASE : {:?}", instructions);
     println!("INSTRUCTIONS OPTI : {:?}", instructions_opti);
 
-    let mut mem_index = index;
-    for instruction_index in 00..instructions.len() {
-        let instruction = instructions[instruction_index].clone();
+    
+    let mut mem_index = index as i32;
+    for instructions in 00..instructions_opti.len() {
+        let instruction = instructions_opti[instructions].clone();
         println!("  mem avant {:?}", memoire);
         match instruction {
-            Instruction::Plus => {
-                println!("+");
-                memoire[mem_index] += 1
+            Instruction::PlusMoins(nb) => {
+                println!("PlusMoins : {} indx {}", nb, mem_index);
+                memoire[mem_index as usize] += nb
             }
-            Instruction::Moins => {
-                println!("-");
-                memoire[mem_index] -= 1
-            }
-            Instruction::Droite => {
-                println!("D");
-                let new_index = mem_index + 1;
-                if new_index >= memoire.len(){
-                    memoire.push(0)
+            Instruction::DroiteGauche(nb) => {
+                println!("DroiteGauche : {} indx {}", nb, mem_index);
+                let new_index = mem_index + nb;
+                if new_index >= memoire.len() as i32{
+                    let diff = new_index - memoire.len() as i32 +1;
+                    (0..diff).for_each(|_| memoire.push(0));
                 }
                 mem_index = new_index
-
             }
-            Instruction::Gauche => {
-                println!("G");
-                let mut new_index = mem_index;
-
-                if new_index != 0 {
-                    new_index -= 1;
-                    mem_index = new_index;
-                }else{
-                    println!("Dépassement de la limite de la memoire (coté gauche, ne pas se déplacer)")
-                }
-            }
-            Instruction::Affiche => println!("mem[{}] : {:?}", mem_index, memoire[mem_index]),
+            Instruction::Affiche => println!("mem[{}] : {:?}", mem_index, memoire[mem_index as usize]),
             Instruction::Lis => {
                 println!("Entrez un nombre : ");
                 // input int from console
                 let mut input = String::new();
                 std::io::stdin().read_line(&mut input);
                 println!("input : {}",   input.trim().parse::<i32>().unwrap());
-                memoire[mem_index] = input.trim().parse::<i32>().unwrap();
+                memoire[mem_index as usize] = input.trim().parse::<i32>().unwrap();
             }
             Instruction::Boucle(les_instructions) => {
-                while memoire[mem_index] != 0
+                while memoire[mem_index as usize] != 0
                 {
                     println!("lesInstructions : {:?}", &les_instructions);
-                    interpreteur(memoire, &les_instructions, mem_index);
+                    interpreteur(memoire, &les_instructions, mem_index as usize);
                 }
             }
-            Instruction::PlusOpti(nb) => {
-                println!("+{}", nb);
-                memoire[mem_index] += nb
-            }
-            Instruction::MoinsOpti(nb) => {
-                println!("+{}", nb);
-                memoire[mem_index] -= nb
-            }
-            Instruction::DroiteOpti(nb) => {
-                let new_index = mem_index + nb as usize;
-                for i in 0..nb{
-                    if new_index >= memoire.len(){
-                        memoire.push(0)
-                    }
-                }
-                mem_index = new_index
-            }
-            Instruction::GaucheOpti(nb) => {
-                let mut new_index = mem_index;
-
-                if new_index != 0 {
-                    new_index -= 1;
-                    mem_index = new_index;
-                }else{
-                    println!("Dépassement de la limite de la memoire (coté gauche, ne pas se déplacer)")
-                }
-            }
-            Instruction::AfficheOpti(nb) => {}
-            Instruction::LisOpti(nb) => {}
+            Instruction::Fin => (),
+            _ => println!("Erreur"),
         }
     }
 }
-
-fn move_side(memoire: &mut Vec<i32>, mem_index: usize, side: Instruction) -> usize{
-    let mut new_index = mem_index;
-    match side {
-        Instruction::Droite => {
-            new_index += 1;
-            if new_index >= memoire.len(){
-                memoire.push(0)
-            }
-        },
-        Instruction::Gauche => {
-            if new_index != 0 {
-                new_index -= 1
-            }else{
-                println!("Dépassement de la limite de la memoire (coté gauche, ne pas se déplacer)")
-            }
-        }
-        _ => println!("Erreur"),
-    }
-    new_index
-}
-
 
 #[derive(Clone, Debug, PartialEq)]
 enum Instruction {
@@ -171,10 +217,7 @@ enum Instruction {
     Affiche,
     Lis,
     Boucle(Vec<Instruction>),
-    PlusOpti(i32),
-    MoinsOpti(i32),
-    DroiteOpti(i32),
-    GaucheOpti(i32),
-    AfficheOpti(i32),
-    LisOpti(i32),
+    PlusMoins(i32),
+    DroiteGauche(i32),
+    Fin,
 }
