@@ -1,0 +1,14 @@
+c:\Users\jgu\Desktop\Cours\Rust\tp5\target\rls\debug\deps\infer-b976ac13a5b0f7d2.rmeta: C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\infer-0.2.3\src\lib.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\infer-0.2.3\src\map.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\infer-0.2.3\src\matchers\mod.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\infer-0.2.3\src\matchers\app.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\infer-0.2.3\src\matchers\archive.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\infer-0.2.3\src\matchers\audio.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\infer-0.2.3\src\matchers\doc.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\infer-0.2.3\src\matchers\font.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\infer-0.2.3\src\matchers\image.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\infer-0.2.3\src\matchers\video.rs
+
+c:\Users\jgu\Desktop\Cours\Rust\tp5\target\rls\debug\deps\infer-b976ac13a5b0f7d2.d: C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\infer-0.2.3\src\lib.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\infer-0.2.3\src\map.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\infer-0.2.3\src\matchers\mod.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\infer-0.2.3\src\matchers\app.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\infer-0.2.3\src\matchers\archive.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\infer-0.2.3\src\matchers\audio.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\infer-0.2.3\src\matchers\doc.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\infer-0.2.3\src\matchers\font.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\infer-0.2.3\src\matchers\image.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\infer-0.2.3\src\matchers\video.rs
+
+C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\infer-0.2.3\src\lib.rs:
+C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\infer-0.2.3\src\map.rs:
+C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\infer-0.2.3\src\matchers\mod.rs:
+C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\infer-0.2.3\src\matchers\app.rs:
+C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\infer-0.2.3\src\matchers\archive.rs:
+C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\infer-0.2.3\src\matchers\audio.rs:
+C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\infer-0.2.3\src\matchers\doc.rs:
+C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\infer-0.2.3\src\matchers\font.rs:
+C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\infer-0.2.3\src\matchers\image.rs:
+C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\infer-0.2.3\src\matchers\video.rs:

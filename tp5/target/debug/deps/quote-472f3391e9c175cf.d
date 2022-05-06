@@ -1,0 +1,13 @@
+C:\Users\jgu\Desktop\Cours\Rust\tp5\target\debug\deps\quote-472f3391e9c175cf.rmeta: C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\quote-1.0.18\src\lib.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\quote-1.0.18\src\ext.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\quote-1.0.18\src\format.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\quote-1.0.18\src\ident_fragment.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\quote-1.0.18\src\to_tokens.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\quote-1.0.18\src\runtime.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\quote-1.0.18\src\spanned.rs
+
+C:\Users\jgu\Desktop\Cours\Rust\tp5\target\debug\deps\libquote-472f3391e9c175cf.rlib: C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\quote-1.0.18\src\lib.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\quote-1.0.18\src\ext.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\quote-1.0.18\src\format.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\quote-1.0.18\src\ident_fragment.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\quote-1.0.18\src\to_tokens.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\quote-1.0.18\src\runtime.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\quote-1.0.18\src\spanned.rs
+
+C:\Users\jgu\Desktop\Cours\Rust\tp5\target\debug\deps\quote-472f3391e9c175cf.d: C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\quote-1.0.18\src\lib.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\quote-1.0.18\src\ext.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\quote-1.0.18\src\format.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\quote-1.0.18\src\ident_fragment.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\quote-1.0.18\src\to_tokens.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\quote-1.0.18\src\runtime.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\quote-1.0.18\src\spanned.rs
+
+C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\quote-1.0.18\src\lib.rs:
+C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\quote-1.0.18\src\ext.rs:
+C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\quote-1.0.18\src\format.rs:
+C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\quote-1.0.18\src\ident_fragment.rs:
+C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\quote-1.0.18\src\to_tokens.rs:
+C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\quote-1.0.18\src\runtime.rs:
+C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\quote-1.0.18\src\spanned.rs:

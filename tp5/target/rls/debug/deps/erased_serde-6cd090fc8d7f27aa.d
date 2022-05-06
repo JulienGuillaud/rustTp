@@ -1,0 +1,13 @@
+c:\Users\jgu\Desktop\Cours\Rust\tp5\target\rls\debug\deps\erased_serde-6cd090fc8d7f27aa.rmeta: C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\erased-serde-0.3.20\src\lib.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\erased-serde-0.3.20\src\macros.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\erased-serde-0.3.20\src\any.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\erased-serde-0.3.20\src\de.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\erased-serde-0.3.20\src\error.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\erased-serde-0.3.20\src\features_check\mod.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\erased-serde-0.3.20\src\map.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\erased-serde-0.3.20\src\ser.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\erased-serde-0.3.20\src\private.rs
+
+c:\Users\jgu\Desktop\Cours\Rust\tp5\target\rls\debug\deps\erased_serde-6cd090fc8d7f27aa.d: C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\erased-serde-0.3.20\src\lib.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\erased-serde-0.3.20\src\macros.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\erased-serde-0.3.20\src\any.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\erased-serde-0.3.20\src\de.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\erased-serde-0.3.20\src\error.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\erased-serde-0.3.20\src\features_check\mod.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\erased-serde-0.3.20\src\map.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\erased-serde-0.3.20\src\ser.rs C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\erased-serde-0.3.20\src\private.rs
+
+C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\erased-serde-0.3.20\src\lib.rs:
+C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\erased-serde-0.3.20\src\macros.rs:
+C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\erased-serde-0.3.20\src\any.rs:
+C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\erased-serde-0.3.20\src\de.rs:
+C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\erased-serde-0.3.20\src\error.rs:
+C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\erased-serde-0.3.20\src\features_check\mod.rs:
+C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\erased-serde-0.3.20\src\map.rs:
+C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\erased-serde-0.3.20\src\ser.rs:
+C:\Users\jgu\.cargo\registry\src\github.com-1ecc6299db9ec823\erased-serde-0.3.20\src\private.rs:
